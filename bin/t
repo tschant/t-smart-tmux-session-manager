@@ -35,7 +35,7 @@ elif [ $# -eq 0 ]; then
 	else # currently in tmux
 		TMUX_AND_ZOXIDE_SESSION="$(tmux list-sessions -F '#S' && zoxide query -l && grep 'Host .*' "$HOME/.ssh/config")"
 		# ZOXIDE_RESULT=$( echo "$TMUX_AND_ZOXIDE_SESSION" | fzf --reverse --prompt "$PROMPT" --bind "$ALL_BINDING" --bind "$SESSION_BINDING" --bind "$ZOXIDE_BINDING" --bind "$SSH_BINDING" --header "$HEADER")
-		ZOXIDE_RESULT=$( echo "$TMUX_AND_ZOXIDE_SESSION" | fzf --reverse --prompt "$PROMPT" --bind "$ALL_BINDING" --bind "$SESSION_BINDING" --bind "$ZOXIDE_BINDING" --bind "$SSH_BINDING" --header "$HEADER" --no-preview)
+		ZOXIDE_RESULT=$( echo "$TMUX_AND_ZOXIDE_SESSION" | fzf-tmux --reverse --prompt "$PROMPT" --bind "$ALL_BINDING" --bind "$SESSION_BINDING" --bind "$ZOXIDE_BINDING" --bind "$SSH_BINDING" --header "$HEADER" --no-preview)
 	fi
 else
 	ZOXIDE_RESULT=$(zoxide query "$1")
